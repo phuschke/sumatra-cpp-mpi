@@ -1,9 +1,14 @@
-#include "HelloWorldPrinter.h"
+#include <iostream>
+#include <mpi.h>
 
-/// \todo Nothing left to do
-
-int main()
+int main(int argc, char** argv)
 {
-	HelloWorldPrinter printer;
-	printer.Print();
+    MPI_Init(&argc, &argv);
+
+    int rank = 0;
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+
+    std::cout << "Im rank " << rank << std::endl;
+
+    MPI_Finalize();
 }
